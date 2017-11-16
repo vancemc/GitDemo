@@ -1,4 +1,5 @@
 latest version of master
+my new change
 old version of master
 
 foo
