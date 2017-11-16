@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 latest version of master
+=======
+>>>>>>> 38f9dc07a3070e0b097cc8b7d8a9c5323d4cb8aa
+my new change
 old version of master
 
 foo
@@ -17,4 +21,6 @@ plugh
 xyzzy
 thud
 
+
+some other change.
 
