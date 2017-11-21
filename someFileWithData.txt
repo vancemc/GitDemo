@@ -1,4 +1,4 @@
-old version of master
+current version of master in remote repo
 
 foo
 bar
