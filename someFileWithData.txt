@@ -1,4 +1,5 @@
-current version of master in remote repo
+newer version
+old version of master in remote repo
 
 foo
 bar
