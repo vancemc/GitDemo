@@ -1,6 +1,4 @@
-even a newer version
-newer version
-old version of master in remote repo
+My new changes for branch demo_new_branch_ui
 
 foo
 bar
