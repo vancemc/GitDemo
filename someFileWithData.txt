@@ -1,6 +1,11 @@
 My new changes for branch demo_new_branch_ui
+made a change to demo the new branch: demo_new_branch_cmd_line
 
-foo
+even a newer version
+newer version
+old version of master in remote repo
+
+foo, bar, baz
 bar
 ba
 baz
