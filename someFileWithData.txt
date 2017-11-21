@@ -4,7 +4,7 @@ even a newer version
 newer version
 old version of master in remote repo
 
-foo
+foo, bar, baz
 bar
 ba
 baz
