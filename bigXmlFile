@@ -1,0 +1,1544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5D453FE-DA26-4212-B0B1-265798D1899E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cognosante.QA.CEDAR</RootNamespace>
+    <AssemblyName>Cognosante.QA.CEDAR</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CERRS.NG.LetterProcessor.Model, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\cogno-cerrs-letterprocessor-model.1.2.5\lib\net461\CERRS.NG.LetterProcessor.Model.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cognosante.QA.TestEngineering.RemoteService.API, Version=1.0.6453.13151, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cognosante.QA.TestEngineering.RemoteService.API.1.0.6453.13151\lib\net461\Cognosante.QA.TestEngineering.RemoteService.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cognosante.QA.TestEngineering.TestCore, Version=1.0.6277.28733, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cognosante.QA.TestEngineering.TestCore.1.0.6277.28733\lib\net452\Cognosante.QA.TestEngineering.TestCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\IIS.Microsoft.Web.Administration.8.5.9600.17042\lib\Microsoft.Web.Administration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema, Version=3.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.3.0.3\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quintity.TestFramework.Core, Version=3.0.6260.16083, Culture=neutral, PublicKeyToken=5b69279c1cf6e726, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.2.0\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\packages\Selenium.Support.3.1.0\lib\net40\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestTargets\CCHC\LoadHICSTests.cs" />
+    <Compile Include="TestTargets\CERRS.NG\CrmTestClassBase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMCaseGeneral.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMEnrollmentDisputeCase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRM1095Case.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMEagleEye1095.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMEntitySearch.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMGeneral.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMIssuerDisputeInternal.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMIssuerOutreachCase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMMailingUpdates.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMProdCheck.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMMCRSearch.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMQueues.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestCRMUsers.cs" />
+    <Compile Include="TestTargets\CERRS.NG\TestMethods.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Alerts\AlertBase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Alerts\LoginAlert.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\AlertText.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\BuuUpdateIdentifiersGrid.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\CaseAssigneesGrid.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\CaseHistoryAndActivity.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\CorrelatedCasesGrid.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\CrmGrid.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\Cases\ReprintGrid.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\ControlBase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmContentStatusBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmContentTable\CasesContentTable.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmContentTable\CrmContentTableBase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmContentTable\ICrmContentTable.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmContentTable\QueuesContentTable.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\CasesTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\CaseTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\CrmTopBarBase.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\DataRemediationInformationTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\NewAssigneeTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\QueuesTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\SearchEntitiesResultsTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\SettingsTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\CrmTopBar\UserTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Controls\MasterTopBar.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\BaseData.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\BuuUpdate.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\CaseAnalysis.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\EnrollmentDispute\EnrollmentDisputeCaseData.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\CaseData.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\CaseDetail.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\CaseHistroyAndActivity.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\CaseStata.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\ConsumerOutreach.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\EnrollmentDispute\EnrollmentDisputesCaseContact.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\EnrollmentDispute\EnrollmentDisputesCaseDisputes.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\EnrollmentDispute\EnrollmentDisputesCaseStatus.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\EnrollmentDispute\EnrollmentDisputesCaseDetails.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssueDisputeInternalCaseDetail.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternal.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternalCaseAdmin.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternalFFMValues.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternalFileHeader.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternalIssuerDetails.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerDisputeInternal\IssuerDisputeInternalResponse.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\IssuerOutreach.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\MailingUpdate\MailingUpdateAnalysis.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\MailingUpdate\MailingUpdateCaseDetails.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\MailingUpdate\MailingUpdateCaseStatus.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\MailingUpdate\MailingUpdateData.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Case\SystemFields.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\Consumer\ConsumerSummary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\DataRemediation.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\TestCaseData.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\User.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Data\UserStory.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\Consumer\NewConsumer.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\Consumer\NewConsumerModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\FieldCurrency.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\EnrollmentDispute\EnrollmentDisputeCaseContent.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\EnrollmentDispute\EnrollmentDisputeCaseSummary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\EnrollmentDispute\EnrollmentDisputesCaseActivity.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerDispute\IssuerDisputeInternalSmmary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerDispute\IssuerDisputeInternalContent.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerOutreachCaseContent.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerOutreachCaseNotes.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerOutreachSummary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\MailingUpdate\MailingUpdateContent.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\MailingUpdate\MailingUpdateSummary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\EnrollmentPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\SearchPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Settings\Security\SecurityPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Settings\Security\UserContent.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Settings\Security\UserPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Settings\Security\UsersPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Settings\SettingsPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\EnumExtension.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\AdvancedFind\AdvancedFindPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\AdvancedFind\Entity.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\AdvancedFind\ListToolsPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\CRMApplicationPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\BasePage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CasesContentPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CasesPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\BuuUpdateModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CaseAnalysisModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CaseContentPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CaseHistroyAndActivityModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CaseNotes.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CasePage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CaseSummary.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\ConsumerOutreachModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\BaseField.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\FieldDateTime.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\FieldDropdown.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\FieldLookup.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\FieldTextbox.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\CrmField\ICrmField.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\IssuerOutreachModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\MiniMauFormPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\NewCaseAssigneePage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\Cases\SystemFieldsModel.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\ConsumerTimeline\ConsumerTimelinePage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\CrmContentPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\DataRemediationInformationPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\EagleEye\Pages\EagleEyeStandalone.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\HomePage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\LoginPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\QueuesContentPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\QueuesPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\ReportAProblem.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\SearchEntitiesResultsPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\CRM\Pages\SubmitDataRemediationPage.cs" />
+    <Compile Include="TestTargets\CERRS.NG\UIFramework\LeagyMCRSearch\Pages\MCRSearchStandalone.cs" />
+    <Compile Include="TestTargets\CERRS.NG\Utilities.cs" />
+    <Compile Include="TestTargets\DataLoad\DataLoadTests.cs" />
+    <Compile Include="TestTargets\Disputes\Models\IssuerDisputeErrorDispositionMapModel.cs" />
+    <Compile Include="TestTargets\Disputes\Repositories\DisputesRepository.cs" />
+    <Compile Include="TestTargets\Disputes\TestCases\DisputesTestBase.cs" />
+    <Compile Include="TestTargets\Disputes\TestCases\DisputeTests.cs" />
+    <Compile Include="TestTargets\Disputes\TestCases\EnrollmentDisputes.cs" />
+    <Compile Include="TestTargets\Disputes\TestCases\EnrollmentDisputeUtilsTests.cs" />
+    <Compile Include="TestTargets\Disputes\TestCases\IssuerDisputes.cs" />
+    <Compile Include="TestTargets\Disputes\TestData\Models\IssuerDisputeErrorDispositionMapModel.cs" />
+    <Compile Include="TestTargets\Disputes\TestData\Repositories\DisputesRepository.cs" />
+    <Compile Include="TestTargets\FileManagement\ConfigReader.cs" />
+    <Compile Include="TestTargets\FileManagement\FileManagementCommon.cs" />
+    <Compile Include="TestTargets\FileManagement\OperaFilemanagementCommon.cs" />
+    <Compile Include="TestTargets\Letters\ErrorHandlingTests.cs" />
+    <Compile Include="TestTargets\Letters\LoggingTests.cs" />
+    <Compile Include="TestTargets\Letters\LettersPerformance.cs" />
+    <Compile Include="TestTargets\WebServices\Common.cs" />
+    <Compile Include="TestTargets\WebServices\Dispute.cs" />
+    <Compile Include="TestTargets\WebServices\GetApplication.cs" />
+    <Compile Include="TestTargets\WebServices\DMI.cs" />
+    <Compile Include="TestTargets\WebServices\DSRS.cs" />
+    <Compile Include="TestTargets\WebServices\Enrollment.cs" />
+    <Compile Include="TestTargets\WebServices\JournalRead.cs" />
+    <Compile Include="TestTargets\WebServices\JournalSubmittal.cs" />
+    <Compile Include="TestTargets\WebServices\Models\DMIRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\DSRSDocumentResponse.cs" />
+    <Compile Include="TestTargets\WebServices\Models\DSRSErrorResponse.cs" />
+    <Compile Include="TestTargets\WebServices\Models\DSRSMetadataSearchResponse.cs" />
+    <Compile Include="TestTargets\WebServices\Models\EnrollmentRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\EnrollmentResponseModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\UniverseDetailsResponseModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\JournalReadRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\JournalResponseModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\JournalSubmittalRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\PersonRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\PersonResponseModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\ResponseErrorModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\ResponseSuccessModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\SVIRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\SVIResponseModel.cs" />
+    <Compile Include="TestTargets\WebServices\AddressInfo.cs" />
+    <Compile Include="TestTargets\WebServices\PersonSearch.cs" />
+    <Compile Include="TestTargets\WebServices\HealthCheck.cs" />
+    <Compile Include="TestTargets\WebServices\UniverseDetails.cs" />
+    <Compile Include="TestTargets\WebServices\WorkbookData.cs" />
+    <Compile Include="TestTargets\WebServices\SmartyStreets.cs" />
+    <Compile Include="TestTargets\WebServices\SVIInformation.cs" />
+    <Compile Include="TestTargets\WebServices\SVInformation.cs" />
+    <Compile Include="TestTargets\WebServices\RESTServicesBase.cs" />
+    <Compile Include="TestTargets\FileManagement\CDEAutomatedFileTransferTests.cs" />
+    <Compile Include="TestTargets\FileManagement\CedarFileManagementAutomationTests.cs" />
+    <Compile Include="TestTargets\Letters\LettersBaseMethods.cs" />
+    <Compile Include="TestTargets\Letters\LetterTests.cs" />
+    <Compile Include="TestTargets\Letters\TransmissionTests.cs" />
+    <Compile Include="TestTargets\WebServices\CERRSConnectTestClass.cs" />
+    <Compile Include="TestTargets\General\GeneralTestClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestTargets\WebServices\MCRObject.cs" />
+    <Compile Include="TestTargets\WebServices\MCRTestMethods - Performance.cs" />
+    <Compile Include="TestTargets\WebServices\MCRTestMethods.cs" />
+    <Compile Include="TestTargets\WebServices\Models\CERRSConnectLogEntry.cs" />
+    <Compile Include="TestTargets\WebServices\Models\AddressRequestModel.cs" />
+    <Compile Include="TestTargets\WebServices\Models\AddressResponseModel.cs" />
+    <Compile Include="TestTargets\Reporting\TestCases\DimIssuerNameTests.cs" />
+    <Compile Include="TestTargets\Reporting\TestCases\RefreshReportDataFactPPRTests.cs" />
+    <Compile Include="TestTargets\Reporting\TestCases\RefreshReportDataFactRCNOPolicyTests.cs" />
+    <Compile Include="TestTargets\Reporting\TestCases\RefreshReportingPPRSummaryTempJobTests.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\FormValidationTests.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\ImportValidationTests.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\KILImportValidation.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\SBMTestBase.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\SFCodeValidation.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\SPDCodeValidation.cs" />
+    <Compile Include="TestTargets\SBM\TestCases\SyntaxTests.cs" />
+    <Compile Include="TestTargets\SBM\Utilities.cs" />
+    <Compile Include="TestTargets\UIE\TestCases\UIETests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestOutput\DSRS\" />
+    <Folder Include="TestOutput\SmartyStreets\" />
+    <Folder Include="TestResults\" />
+    <Folder Include="TestTargets\CCHC\TestGolds\" />
+    <Folder Include="TestTargets\CERRS.NG\UIFramework\Workflows\" />
+    <Folder Include="TestTargets\Disputes\TestCases\Debug Help\" />
+    <Folder Include="TestTargets\Disputes\TestData\ConsumerDisputes\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48642_FR18\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48644_FR31\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48644_FR31\Validation\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU32\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU43\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48659_FR10\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48660_FR16\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\53178_NW11\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54194_NW12_NW13\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR10\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\58178_Code_Source_NewColumns\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\BU38_48663\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48644_Reinstatement\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48645_EndDateDispute\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR42_58445\TestDataInsertScript\" />
+    <Folder Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\SupportingData\" />
+    <Folder Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\SupportingData\" />
+    <Folder Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\SupportingData\" />
+    <Folder Include="TestTargets\Disputes\TestData\Scripts\IssuerDisputes\" />
+    <Folder Include="TestTargets\Disputes\TestGolds\EnrollmentDispute\" />
+    <Folder Include="TestTargets\Disputes\TestSuites\EnrollmentDisputes\" />
+    <Folder Include="TestTargets\FileManagement\TestData\FFM\" />
+    <Folder Include="TestTargets\FileManagement\TestData\Opera\Manual_1095a\" />
+    <Folder Include="TestTargets\FileManagement\TestGolds\" />
+    <Folder Include="TestTargets\FileManagement\TestOutput\" />
+    <Folder Include="TestTargets\FileManagement\TestProperties\" />
+    <Folder Include="TestTargets\General\TestData\" />
+    <Folder Include="TestTargets\General\TestGolds\" />
+    <Folder Include="TestTargets\SBM\TestConfigs\" />
+    <Folder Include="TestTargets\SBM\TestGolds\" />
+    <Folder Include="TestTargets\UIE\TestData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestConfigs\Quintity.TestFramework.TestEngineer.exe.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestProperties\Cognosante.QA.CEDAR.Deployment - Copy.props" />
+    <None Include="TestProperties\Cognosante.QA.CEDAR.Deployment.props" />
+    <None Include="TestRepository\CEDAR.CRM.Smoke.Test.Suite.ps1" />
+    <None Include="TestRepository\CEDAR.Master.Test.Suite.ps1" />
+    <None Include="TestTargets\CCHC\TestData\cases\2017-CCHC_complex_case_verification_spreadsheet.xlsx" />
+    <None Include="TestTargets\CCHC\TestProperties\QA.CEDAR.props" />
+    <None Include="TestTargets\CCHC\TestSuites\CCHC-Complex_Case_logic.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\CCHC Regression Suite.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\CCHC-Complex_Case_logic_updates.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\HICSAutomationLimited.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\Load5000HICSCases.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\LoadHICSComplexCases.ste" />
+    <None Include="TestTargets\CCHC\TestSuites\LoadHICSMaster.ste" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_Address.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_Assistor.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_EnrollmentData.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_PendedPlanSelection.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_PolicyPremium.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_PolicyStatus_v1.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\AppID3268440\1147006_Subscriber.json" />
+    <None Include="TestTargets\CERRS.NG\TestGolds\Enrollment\39042400_PolicyStatus.json" />
+    <None Include="TestTargets\CERRS.NG\TestSuites\CERRS.NG Regression Suite.ste" />
+    <None Include="TestTargets\CERRS.NG\TestSuites\Crm-Regression.ste" />
+    <None Include="TestTargets\CERRS.NG\TestSuites\CRM-Smoke.ste" />
+    <None Include="TestTargets\CERRS.NG\TestSuites\ProductionRegression.ste" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\FFM_Extract_TestData_20160608_M834.p" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\FFM_Extract_TestData_20161111.p" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\FFM_Extract_TestData_Non834.p" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\PREAUDIT2016_Test_20161231.P" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\RCNO.MISC16.D160707.T164421879.p" />
+    <None Include="TestTargets\DataLoad\TestData\Datasets\RCNO_TestData_20151118.P" />
+    <None Include="TestTargets\DataLoad\TestSuites\18574 - PreAudit Data Load.ste" />
+    <None Include="TestTargets\DataLoad\TestSuites\20352 - RCNO SSIS Data Load.ste" />
+    <None Include="TestTargets\DataLoad\TestSuites\20398 - M834 FFM SSIS data load.ste" />
+    <None Include="TestTargets\DataLoad\TestSuites\Data Load Regression Suite.ste" />
+    <None Include="TestTargets\Disputes\TestConfigs\TargetProcessListeners.config" />
+    <None Include="TestTargets\Disputes\TestData\BUUUpdates\BUUUpdate - Gold.IN" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\EDBO.5k.OUT" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\FFM_Extract.5k.OUT" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\PreAudit5k.OUT" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\RCNO.5k.OUT" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\FFM_Extract_TestData_20160608_M834.p" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\FFM_Extract_TestData_20161111.p" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\FFM_Extract_TestData_Non834.p" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\PREAUDIT2016_Test_20161231.P" />
+    <None Include="TestTargets\Disputes\TestData\Datasets\RCNO.MISC16.D160707.T164421879.p" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25323_FR11\InputFiles\EnrollmentDispute_testForm_FR_11.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25323_FR11\TestDataInsertScript\DisputeInputFiles - Shortcut.lnk" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25326_FR14\InputFiles\EnrollmentDispute_testForm_FR_14.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25328_FR16\InputFiles\EnrollmentDispute_testForm_FR_16.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR38_48661\InputFiles\FR38_InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52983_ET1\InputFiles\EnrollmentDispute_testForm_ET1.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54194_NW12_NW13\InputFiles\EnrollmentDispute_testForm_NW12_13.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54500_BU21\InputFiles\EnrollmentDispute_testForm_BU21.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year\InputFiles\EnrollmentDispute_testForm_BU11_Refactor.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year_Null_Inventory\InputFiles\EnrollmentDispute_testForm_BU11_Refactor.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54665_RU30\InputFiles\EnrollmentDispute_testForm_RU30.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\56415_RU9\InputFiles\EnrollmentDispute_testForm_RU9.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR10\InputFiles\EnrollmentDispute_testForm_FR_10.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR18\InputFiles\EnrollmentDispute_testForm_FR18.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48655_BU26\InputFiles\EnrollmentDispute_testForm_BU26_aab7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU43\InputFiles\EnrollmentDispute_testForm_BU43_aab7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU32\InputFiles\EnrollmentDispute_testForm_BU32_aab7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\53178_NW11\InputFiles\EnrollmentDispute_testForm_NW11_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48666_FR24\InputFiles\EnrollmentDispute_testForm_FR_24_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48646_FR25\InputFiles\EnrollmentDispute_testForm_FR_25_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48654_FR4\InputFiles\EnrollmentDispute_testForm_FR_4_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48659_FR10\InputFiles\EnrollmentDispute_testForm_FR_10_aab7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48647_FR23\InputFiles\EnrollmentDispute_testForm_FR_23_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48644_FR31\InputFiles\EnrollmentDispute_testForm_FR_31_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48660_FR16\InputFiles\EnrollmentDispute_testForm_FR_16_aac7692bd79b4f52a0d03bdbb032170b.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\58178_Code_Source_NewColumns\InputFiles\EnrollmentDispute_testForm_ET1.E" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\BU38_48663\InputFiles\BU38-InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48645_EndDateDispute\InputFiles\FR32-EndDateDispute-InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48644_Reinstatement\InputFiles\FR32-Reinstatement-InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR34_48662\InputFiles\FR34-InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR42_58445\InputFiles\FR42-InputFile.E">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\21197RCNOSupportingData.I" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\BUU2andBUU11\Scenario1.I" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\BUU2andBUU11\Scenario2.I" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\BUU2andBUU11\Scenario3.I" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\BUU2andBUU11\Scenario4.I" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\RCNOSupportingData\GenericRCNOData.I" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\!%40#%24%25 - ~`^&amp;%28%29.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15035.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15036.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15037.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15038.1.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15038.2.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15039.1.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15039.2.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15039.3.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15039.4.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.1.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.10.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.11.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.12.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.13.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.14.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.15.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.16.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.17.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.18.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.19.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.2.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.20.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.21.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.22.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.23.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.24.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.25.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.26.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.27.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.28.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.29.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.3.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.30.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.31.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.32.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.33.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.34.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.35.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.36.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.37.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.38.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.39.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.4.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.40.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.5.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.6.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.7.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.8.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15041.9.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15079.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15302.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15378.1.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15378.2.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15378.3.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15379.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15381.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15382.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15430.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15431.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15451.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15572.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15573.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15574.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15575.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15843.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15844.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15845.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15846.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15847.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15848.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15849.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\15850.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16213.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16292.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16378.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16379.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16380.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16381.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16698.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16699.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\16930.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\18031.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\BaseDispute.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\COGN.MISCTEST16.D160510.T160826163.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\FV3.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\GenericPPR.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\RCNO_TestData_20151118.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone1.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone2.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone3.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone4.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone5.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\Telephone6.IN" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\Disputes\22395.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\TestGolds\22395TestGold.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\TestGolds\22395TestGoldOld.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\Disputes\22398.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\TestGolds\22398TestGold.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\TestGolds\22398TestGoldOld.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\Disputes\22399.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\TestGolds\22399TestGold.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\TestGolds\22399TestGoldOld.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\CRMTest.p" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV1_R2_BadExchangeAssignedSubscriberID.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV2_R1_BadPPRTransactionSetControlNumber-HIX820EDTTraceNumber.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV501_R2_BadFFMAmount-IssuerAmount.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV600_R2_BadFFMAmount-IssuerAmount.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV803_R8.p" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV900_R3_BadFFMAmounts.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\FV9_R3_BadIssuerHIOSID.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\PD3_I2.p" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\PD522_R9.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\SR1_R1_BadPhoneNumber.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\SR2_R1_BadCoveragePeriodStartDateFFM.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\SR3_R1_BadExchangeAssignedSubscriberID.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\ResultingDispositionCodes\SR4_R2_BadCSRAmountFFM.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\I1.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\I2.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\I3.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\I4.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\I6.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R1.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R2.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R3.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R4.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R5.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R6.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R7.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R8.P" />
+    <None Include="TestTargets\Disputes\TestData\IssuerDisputes\SupportingData\R9.P" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\!%40#%24%25 - ~`^&amp;%28%29.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15039.3.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15039.4.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.10.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.11.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.34.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.35.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.36.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.37.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.38.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15041.39.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15079.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15302.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15378.1.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15378.2.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15378.3.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15379.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15381.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15382.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15430.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15431.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15451.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15572.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15573.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15574.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15575.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15843.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15844.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15845.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15846.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15847.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15848.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15849.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\15850.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\16213.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\16292.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\16378.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\16930.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\BASEDISPUTE.OUT" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\FFMSummaryReport.csv" />
+    <None Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\Ricardo.OUT" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRS.NG-BVT.props" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRS.NG-CDE.props" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRS.NG-Jim.props" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRS.NG-John.props" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRS.NG-TestPlatform.props" />
+    <None Include="TestTargets\Disputes\TestProperties\CERRSPerf.props" />
+    <None Include="TestTargets\Disputes\TestSuites\22304.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\DisputesMaster.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\EnrollmentDispositionCodes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\EnrollmentDisputes-latest.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\EnrollmentDisputes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\DisputesMaster-Latest.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\EnrollmentDisputeUtilsTests.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15033 - Inbound PPR Dispute Basic Formatting Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15293 - Master Inbound PPR Dispute Ingestion Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15294 - Inbound PPR Dispute Syntax Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15295 - Outbound PPR Dispute Response Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15369 - Inbound PPR Form Level Verifications Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15370 - Inbound PPR FV1 - Invalid FFM Subscriber ID Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15371 - Inbound PPR FV2 - Missing Both Header Identifiers Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15372 - Inbound PPR FV3 - FFM Coverage Dates Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15373 - Inbound PPR FV4 - Issuer Coverage Dates Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15374 - Inbound PPR FV5 - No difference in FFM and Issuer Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15375 - Inbound PPR FV6 - Minor financial differences Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15376 - Inbound PPR FV7 - Exact duplicate Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15377 - Inbound PPR FV8 - Partial duplicates Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15432 - Integrate issuer disputes DB with CRM Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\15571 - PPR Mismatch Test Plan.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\16212 - Phone number syntax changes in payment dispute header.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\16395 - Non-standard characters block disputes file monitor.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\16550 - FMC Summary Report.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\16552 - Known Issues List from Opera.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17804 - CERRS NG Disputes Master Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17805 - Dispute Form Syntax Validation Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17805 - Form Syntax Validation Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17806 - Dispute Form Level Rules Validation Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17806 - Form Level Rules Validation Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\17807 - Payment Dispute Business Rules Validation Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\18574 - PreAudit Data Load.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\18574 - PreAudit Schema.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\18574 - PreAudit Views.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\19878 - RCNO Schema Update.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\19882 - M834 FFM Extract Schema Changes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\19888 - RCNO Views Updated for M834 Changes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\19889 - FFM Extract Views.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\19891 - M834 ODS-based Views.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\20352 - RCNO SSIS Data Load.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\20398 - M834 FFM SSIS data load.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\Issuer disputes utilities.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\IssuerDispute.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\Scratch.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\TestSuite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\WebApp\14337 - Ensure outbound 01 records for BUU updates are formatted correctly.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\WebApp\Build Verification Tests.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\IssuerDisputes\WebApp\Master CERRS NG Web Application Test Suite.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\Master.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\MAU_E2E.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\PaymentDisputes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\PaymentDisputes\PaymentDisputes-latest.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\PaymentDisputes\PaymentDisputes-PD-codes.ste" />
+    <None Include="TestTargets\Disputes\TestSuites\PaymentDisputes\PaymentDisputes-PY-codes.ste" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_csv_not_psv.P.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_enrollment.P.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_fails_rename.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_fails_rename.psv.PP" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_NonDispute.P.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_NonDispute2.P.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_payment.P.psv" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_1095a.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_enrollment8.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_enrollment8MissingWS.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_enrollment_xls.P.xls" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_fails_rename.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_fails_rename.xlsx.EX" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_NonDispute.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_payment.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_paymentMissingField.P.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_WrongFileType.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\CGA14P.FFM.CGA14TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA14P\CGA14P.FFM.CGA14TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA15P.FFM.CGA15TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA15P\CGA15P.FFM.CGA15TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA15P\Zipped\D20170317T223856.CGA15P.FFM.D170314.T214743497.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA15P\Zipped\D20170327T143408.CGA15P.FFM.D170323.T194309484.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGA16P.FFM.CGA16TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGE14P.FFM.CGE14TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGE15P.FFM.CGE15TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGE16P.FFM.CGE16TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGOTHP.FFM.CGOTHPTEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGX14P.FFM.CGX14TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGX15P.FFM.CGX15TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\CGX16P.FFM.CGX16TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\AMTST46SQL05.config.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\AMTST46SQL05EmptyDupeFile.config.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\AMTST46SQL05NoDupeFile.config.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\config.PaymentResponse.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\config.SBM.US34033.json.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\config.SBM.US50181.json.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\dev_config.BUU.46336.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\fileManagement-backup.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\fileManagement-V9processing.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\fileManagement.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\EFT_Files_Log.xlsm" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\EFT_Files_Log_Empty.xlsm" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\test_config.BUU.43074.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\test_config.BUU.48204.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\US44446config.json" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\US48202.ini" />
+    <None Include="TestTargets\FileManagement\TestData\Configs\US50508.ini" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011001.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011001.R" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011002.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011003.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011004.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011005.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPRF\EPRF.EDI.D170726.T003011006.P" />
+    <None Include="TestTargets\FileManagement\TestData\EPSEXT\TPID34031.EPSEXT.D170323.T132111883.p" />
+    <None Include="TestTargets\FileManagement\TestData\EPSEXT\TPID34031.EPSEXT.D170907.T000000001-bad.p" />
+    <None Include="TestTargets\FileManagement\TestData\ERRA.ERRATEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRA.ERRATEST002.D161013.T070115000.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D121011.T131415668.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D161207.T152949554.csv" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D161207.T152949554.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D161207.T152949554.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D161207.T152949554.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D170214.T000115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST001.D170314.T152949554.csv" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST002.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST002.D161205.T163022013.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST003.D011317.T152949554.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST003.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST004.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST005.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST006.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST006.D170214.T000115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST007.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST008.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.ERRPTEST009.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.TPID.D121011.T131415673.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.US32724A.D170323.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.US32724B.D170323.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.US32724C.D170323.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.US32724D.D170323.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP.US32724E.D170323.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP\ERRP.ERRPEMAILTEST1.D161207.T152949554.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP\FileAutomationImprovements\ERRP.ERRPTEST001.D161207.T152949554.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP\FileAutomationImprovements\ERRP.ERRPTEST006.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRP\FileAutomationImprovements\PR.TESTTPID02.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS.ERRSTEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS.ERRSTEST002.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS.ERRSTEST003.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS.ERRSTEST004.D161013.T070115000.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS.TPID.D121011.T131415673.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D051007.T12121212.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131412929.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131415669-ascii.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131415669-l.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131415669-noHicsId.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131415669.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D121011.T131415682.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\ERRS.TPID.D1212416.T131415300.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-1.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-2.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-3.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-4.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-5.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-6.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-v9.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001-v9_multisheet.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D061217.T0000001.xls" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D170807.T0000001-v10-badHIOS.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D170807.T0000001-v10.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\DiscrepancyDispute\Excel\ERRS.TPID.D170807.T0000001-v10.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-3.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-4.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-5.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-6.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-7.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-longHicsId.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673-noHicsId.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\ERRS.TPID.D161011.T131415673.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\Excel\ERRS.TPID.D170808.T000000041-v10-badHIOS.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\Excel\ERRS.TPID.D170808.T000000041-v10.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\EnrollmentBlocker\Excel\ERRS.TPID.D170822.T000000001-v9.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-3.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-4.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-5.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-6.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-7.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-xp.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672-xpN.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\ERRS.TPID.D161011.T131415672.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\Excel\ERRS.TPID.D170808.T000000031-v10-badHIOS.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\Excel\ERRS.TPID.D170808.T000000031-v10.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\NewbornPremiumUpdate\Excel\ERRS.TPID.D170822.T000000031-v9.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-3.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-4.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-5.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-6.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-7.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671-u.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\ERRS.TPID.D161011.T131415671.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v10-badEmail.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v10-badHIOS.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v10-badYear.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v10-noData.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v10.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\ReinstatementPipeFile\Excel\ERRS.TPID.D170808.T000000021-v9.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-2.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-3.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-4.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-5.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-6-1.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-6.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-7-1.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-7-2.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670-7.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\ERRS.TPID.D161011.T131415670.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\Excel\ERRS.TPID.D170808.T000000011-v10-badColumns.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\Excel\ERRS.TPID.D170808.T000000011-v10-badHIOS.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\Excel\ERRS.TPID.D170808.T000000011-v10-badYear.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\Excel\ERRS.TPID.D170808.T000000011-v10.P" />
+    <None Include="TestTargets\FileManagement\TestData\ERRS\RejectedEnrollmentPipeFile\Excel\ERRS.TPID.D170808.T000000011-v9.P" />
+    <None Include="TestTargets\FileManagement\TestData\Invalid\ERRP.TPID.D121011.T131415668-8.P" />
+    <None Include="TestTargets\FileManagement\TestData\Invalid\ERRP.TPID.D121011.T131415668-9.P" />
+    <None Include="TestTargets\FileManagement\TestData\MISC15.OPR.MISC15TEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSetNew.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_BUU_UpdatesHistory_1095A.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Fallout_CCOI.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_FFM_Extract_2014.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_FFM_Extract_2015.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_FFM_Extract_2016.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Midas_2014.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Midas_2015.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Midas_2016.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Rejects.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\Opera\OperaDataSet_Trio.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\OUTPBP.FFM.OUTPBPTEST001.D161013.T070115000.P" />
+    <None Include="TestTargets\FileManagement\TestData\PR.TESTTPID02.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestData\PR.TESTTPID03.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.31.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.D170323.T132111710.p" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.D170323.T132111710.xlsx" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.D170323.T132111883.p" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.D170323.T132112007.p" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\ERRSBM.D170808.T000000001.p" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\KIL\TPID34031.SBMKIL.D170323.T132111883.p" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\UNKNOWN_TPID.SBM.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\UT_SBM_SPD1001.in" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\UT_SBM_SPD1001_ExtraNewlines.in" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\UT_SBM_SPD1002.in" />
+    <None Include="TestTargets\FileManagement\TestData\SBM\UT_SBM_SPD1599.in" />
+    <None Include="TestTargets\FileManagement\TestData\UNKNOWN_TPID.ERRP.D170306.T135524623.P" />
+    <None Include="TestTargets\FileManagement\TestData\UNKNOWN_TPID.TESTTPID01.D160916.T121212001.P" />
+    <None Include="TestTargets\FileManagement\TestSuites\820-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Bug35416-PaymentDisputeEmail.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\CDEAutomatedFileTransferTests.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\CGA14P-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\CGA15P-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\EFT-Outbound-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\EPSEXT-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ERRA-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ERRM-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ERRP-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ERRS-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ERRSBM-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Obsolete\CedarFileManagementAutomation.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\FileManagementRegressionSuite.ste">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestTargets\FileManagement\TestSuites\LateFileTransferTests.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Opera\Opera-US43074_Manual_1095a.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Opera\Opera-US44492_Accenture_Fallout.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Opera\Opera-US46336_FormGen.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Opera\OperaRegressionSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Opera\OperaTests.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\OPRKIL-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\PaymentDisputeResponseFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\PostSSIS-TestSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\ProcessPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\SBM-KIL.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\Template.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\TigerTeam\TigerTeamSuite.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US23091ProcessPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US23096-ProcessDiscrepancyDiputeFile.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US30790ProcessPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US31060-FileAutomationImprovements.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US31138-RejectEnrollmentPipeFile.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US31139-ReinstatementPipeFile.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US31140-NewbornPremiumUpdatePipeFile.ste">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestTargets\FileManagement\TestSuites\US31141-EnrollmentBlocker.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US31195ProcessPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US32074ValidatePaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US32376ProcessCSVPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US32724IgnorePaymentWorksheet.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US32725UnknownTPIDFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US32736ProcessPaymentFiles.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US34031SBMPaymentDisputes.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US34033-SBMPaymentResponse.ste" />
+    <None Include="TestTargets\FileManagement\TestSuites\US41331_UnexpectedErrorProcessing.ste" />
+    <None Include="TestTargets\General\TestSuites\General Regression Suite.ste" />
+    <None Include="TestTargets\General\TestSuites\Handshake Tests.ste" />
+    <None Include="TestTargets\General\TestSuites\XRM Tests.ste" />
+    <None Include="TestTargets\Letters\TestConfigs\LettersProfile.config" />
+    <None Include="TestTargets\Letters\TestGolds\GenerateLetterResponse.json" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Disputes\Test_Dispute_44195.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\Batch\D20170627T130815.ERRS.FV6.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\ProdR_Prod_Transfer\D20170627T130815.ERRS.PPRCUTOVER-PROD.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\ProdR_Prod_Transfer\D20170627T130815.ERRS.PPRCUTOVER-PRODR.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\KIL\Test_KIL_44195A.p" />
+    <None Include="TestTargets\SBM\TestData\Delimited\KIL\Test_KIL_44195B.p" />
+    <None Include="TestTargets\SBM\TestData\Delimited\KIL\Test_KIL_44195C.p" />
+    <None Include="TestTargets\SBM\TestData\Delimited\KIL\Test_KIL_44195D.p" />
+    <None Include="TestTargets\SBM\TestData\Delimited\PD\Batch\D20170627T130815.ERRS.PD6.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\PD\Batch\D20170627T130815.ERRS.PD500.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\PD\Batch\D20170627T130815.ERRS.PDb6.P" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\44194.P.OUT" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\44194.R.OUT" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\D20170627T130815.ERRS.FV900f.P" />
+    <None Include="TestTargets\Letters\TestSuites\LetterTests.ste" />
+    <None Include="TestTargets\Letters\TestSuites\TransmissionRegressionSuite.ste" />
+    <None Include="TestTargets\Letters\TestSuites\ValidationRegressionSuite.ste" />
+    <None Include="TestTargets\Letters\TestSuites\APIHealthCheckTests.ste" />
+    <None Include="TestTargets\Letters\TestSuites\LoggingTests.ste" />
+    <None Include="TestTargets\Letters\TestSuites\LettersRegressionSuite.ste" />
+    <None Include="TestTargets\SBM\TestData\XML\EPSExtracts\ProdR_Prod_Transfer\EPSExtract.P" />
+    <None Include="TestTargets\SBM\TestData\XML\EPSExtracts\ProdR_Prod_Transfer\EPSExtract.R" />
+    <None Include="TestTargets\SBM\TestSuites\EPS-Batch-Suite.ste" />
+    <None Include="TestTargets\SBM\TestSuites\FV-Batch-Suite.ste" />
+    <None Include="TestTargets\SBM\TestSuites\ProdR-Extract-Batch.ste" />
+    <None Include="TestTargets\WebServices\TestData\DSRS\TP55904.json" />
+    <None Include="TestTargets\WebServices\TestData\PaymentDisputesMCRDescription.csv" />
+    <None Include="TestTargets\WebServices\TestData\EnrollmentDisputesMCRDescriptions.csv" />
+    <None Include="TestTargets\WebServices\TestData\AddressInfo\Schemas\EnrollmentSchema.json" />
+    <None Include="TestTargets\WebServices\TestData\AddressInfo\Schemas\GetApplicationSummary.json" />
+    <None Include="TestTargets\WebServices\TestData\CMS Journal.json" />
+    <None Include="TestTargets\WebServices\TestData\Cognosante Journal.json" />
+    <None Include="TestTargets\WebServices\TestData\IssuerDisputes\23572.P" />
+    <None Include="TestTargets\WebServices\TestData\IssuerDisputes\23803.P" />
+    <None Include="TestTargets\WebServices\TestData\JournalWriteTemplate.json" />
+    <None Include="TestTargets\WebServices\TestData\JournalEntries.json" />
+    <None Include="TestTargets\WebServices\TestData\json1.json" />
+    <None Include="TestTargets\WebServices\TestData\SampleNoESWSVIResponse - Copy.json" />
+    <None Include="TestTargets\WebServices\TestData\SampleFullSVIResponse.json" />
+    <None Include="TestTargets\WebServices\TestData\MCR Dispute Journal Post.json" />
+    <None Include="TestTargets\WebServices\TestData\AddressInfo\TP37280.json" />
+    <None Include="TestTargets\WebServices\TestData\UniverseDetails\UniverseDetailGold.json" />
+    <None Include="TestTargets\WebServices\TestGolds\SmartyStreets\SmartyStreets.json" />
+    <None Include="TestTargets\WebServices\TestGolds\SmartyStreets\TP37280.json" />
+    <None Include="TestTargets\WebServices\TestGolds\SmartyStreets\TP37281.json" />
+    <None Include="TestTargets\WebServices\TestGolds\SVIInformation\39748.json" />
+    <None Include="TestTargets\WebServices\TestGolds\SVIInformation\39747.json" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\AddressInfo API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\CERRSConnect Regression.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\CERRSConnect.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Dispute API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DMI API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DSRS API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DSRS Integration Tests.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DSRSDocument API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DSRSDocumentRetrieval API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\DSRSMetadataSearch API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Enrollment API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\GetApplication API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\HealthCheck API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\JournalRead API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\JournalSubmittal API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Person API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\SmartyStreets API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\SVIInformation API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\UniverseDetail API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\WorkbookData API.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR DMIStatus %28IMPL1A%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCRDMIStatus %28Prod%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Enrollment %28IMPL%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Enrollment.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Handshake Test Suite.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Handshake.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Journal %28IMPL1A%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Journal.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\Enrollment.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCRTestSuite.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Person Search %28IMPL%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Person Search.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Regression Suite.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR Test Scenarios %28IMPL%29.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\Misc\Scratch.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Archive\CERRSConnect SVI Tests.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR SVI Handshake Tests.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\MCR SVI integration scenarios.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCR\TP 41405 - MCR SVI E2E scenarios.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\MCRDisputesService\TP33197 - MCRDisputesService defects.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Archive\TP35275.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Archive\TP35323.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Archive\TP35821.ste" />
+    <None Include="TestTargets\WebServices\TestSuites\CERRSConnect\Archive\TP37279.ste" />
+    <None Include="TestTargets\Reporting\TestSuites\Reporting Regression Suite.ste" />
+    <None Include="TestTargets\SBM\TestData\DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV701.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV801.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV803.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV9.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV900.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV905.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV908.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\FV\UT_SBM_FV909.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\PlanMetalLevel\SBM Plan Metal Level.csv" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD5.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD500.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD501.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD502.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD504.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD505.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\gUT_SBM_PD506.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\SPD3.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\SPD568.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\SPD568wMultSeg.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD3.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD5.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD500.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD501.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD502.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD504.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD505.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD506.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD506_redispo.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_PD511.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD1000.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD1001.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD1002.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD1599.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD521.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD530.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD531.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD552.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD568.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\SPD\UT_SBM_SPD803.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\34583.redispo.A.1.p" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\34583.redispo.A.1.R" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\ExchAssPolicyId_GTMax_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\ExchAssPolicyId_ValueDoesNotMatchFormat_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\ExchAssSubId_GTMax_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\ExchAssSubId_ValueDoesNotMatchFormat_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD5.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD500.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD501.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD502.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD504.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD504_hardascii.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD504_hardascii2.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD505.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\gUT_SBM_PD506.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\PolicyTotPremAmtEPS_GTMax_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\PolicyTotPremAmtEPS_ValueDoesNotMatchFormat_DefaultIssuerDispute.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_AssertPPR.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV701.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV801.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV803.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV9.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV900.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV905.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV908.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_FV909.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_PD3.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_PD506_redispo.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_PD511.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD1000.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD1001.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD1002.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD1599.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD521.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD530.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD531.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD552.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD568.IN" />
+    <None Include="TestTargets\SBM\TestData\Delimited\Unsorted\UT_SBM_SPD803.IN" />
+    <None Include="TestTargets\SBM\TestProperties\Cognosante.QA.CERRS.NG.SBM.props" />
+    <None Include="TestTargets\SBM\TestSuites\31324.ste" />
+    <None Include="TestTargets\SBM\TestSuites\33828.ste" />
+    <None Include="TestTargets\SBM\TestSuites\34581.ste" />
+    <None Include="TestTargets\SBM\TestSuites\34582.ste" />
+    <None Include="TestTargets\SBM\TestSuites\34583.ste" />
+    <None Include="TestTargets\SBM\TestSuites\34585.ste" />
+    <None Include="TestTargets\SBM\TestSuites\34922.ste" />
+    <None Include="TestTargets\SBM\TestSuites\35839.ste" />
+    <None Include="TestTargets\SBM\TestSuites\BasicFormValidation.ste" />
+    <None Include="TestTargets\SBM\TestSuites\DisputeDetails.ste" />
+    <None Include="TestTargets\SBM\TestSuites\DisputeHeaders.ste" />
+    <None Include="TestTargets\SBM\TestSuites\EPSSuite.ste" />
+    <None Include="TestTargets\SBM\TestSuites\KILSuite.ste" />
+    <None Include="TestTargets\SBM\TestSuites\SBM Regression Suite.ste" />
+    <None Include="TestTargets\SBM\TestSuites\SBMMaster.ste" />
+    <None Include="TestConfigs\Cognosante.QA.CEDAR.TestListeners.config" />
+    <None Include="TestConfigs\Quintity.TestFramework.Runtime.exe.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestProperties\Cognosante.QA.CEDAR.props" />
+    <None Include="TestSuites\CEDAR Master Test Suite.ste" />
+    <None Include="TestTargets\UIE\TestSuites\UIERegressionSuite.ste" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cognosante.QA.CEDAR.Common\Cognosante.QA.CEDAR.Common.csproj">
+      <Project>{3ea4622a-7f79-4cb3-a991-7bec6d11c0ba}</Project>
+      <Name>Cognosante.QA.CEDAR.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cognosante.QA.CEDAR.TestListeners\Cognosante.QA.CEDAR.TestListeners.csproj">
+      <Project>{a2f03de1-7336-4934-b6f3-4228eef1cb44}</Project>
+      <Name>Cognosante.QA.CEDAR.TestListeners</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\!Template\TestDataInsertScript\FR34-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25323_FR11\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25323_FR11\TestDataInsertScript\RCNO Data FR11.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25323_FR11\ValidationScript\25323-FR11-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25326_FR14\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25326_FR14\TestDataInsertScript\RCNO Data FR14.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25326_FR14\ValidationScript\25323-FR14-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25328_FR16\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\25328_FR16\ValidationScript\25328_FR16-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR34_48662\TestDataInsertScript\FR34-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR38_48661\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR38_48661\TestDataInsertScript\FR38-RCNO.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR38_48661\ValidationScript\FR38_Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52983_ET1\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52983_ET1\TestDataInsertScript\RCNO and FFM Data - ET1 prior year.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52983_ET1\ValidationScript\52983_ET1validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54194_NW12_NW13\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54194_NW12_NW13\ValidationScript\54195_NW12_13validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54500_BU21\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54500_BU21\TestDataInsertScript\RCNO test data BU21.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54500_BU21\ValidationScript\54500_BU21validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year\TestDataInsertScript\RCNO data us-54513.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year\ValidationScript\54513_BU11_Refactor_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year_Null_Inventory\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year_Null_Inventory\TestDataInsertScript\RCNO data us-54513.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54513_BU11_Refactor\Prior_Year_Null_Inventory\ValidationScript\54513_BU11_Refactor_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54665_RU30\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54665_RU30\TestDataInsertScript\RCNO data - BU11 and BU35.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\54665_RU30\ValidationScript\54665_RU30_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\56415_RU9\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\56415_RU9\TestDataInsertScript\RCNO Data RU9.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\56415_RU9\ValidationScript\56415_RU9validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR10\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR10\ValidationScript\57322_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR18\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR18\TestDataInsertScript\RCNO data us-54513.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\57322_RejectedEnrollments\FR18\ValidationScript\57322_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\58178_Code_Source_NewColumns\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\58178_Code_Source_NewColumns\ValidationScript\58178_validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\BU38_48663\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\BU38_48663\ValidationScript\BU38-Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48645_EndDateDispute\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48645_EndDateDispute\ValidationScript\FR32-Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48644_Reinstatement\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR32_48644_Reinstatement\ValidationScript\FR32-Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR34_48662\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR34_48662\TestDataInsertScript\FR34-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR34_48662\ValidationScript\FR34-Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR42_58445\TestDataCleanupScript\FormRuleCleanup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\FR42_58445\ValidationScript\FR42-Validation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48655_BU26\TestDataCleanupScript\48655_BU26_Cleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48655_BU26\TestDataInsertScript\48655_BU26-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48655_BU26\ValidationScript\BU26-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU43\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU43\ValidationScript\48650_BU32-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU32\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48650_BU32\ValidationScript\48650_BU32-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\53178_NW11\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\53178_NW11\ValidationScript\53178_NW11validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52189_FR6.5\InputFiles\EnrollmentDispute-FR6-5.D20170912T214019.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52189_FR6.5\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52189_FR6.5\TestDataInsertScript\Template-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\52189_FR6.5\ValidationScript\52189-FR6.5-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48665_FR6.4\InputFiles\EnrollmentDisputeFR6-4.D20170912T214019.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48665_FR6.4\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48665_FR6.4\TestDataInsertScript\Template-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48665_FR6.4\ValidationScript\48665-FR6.4-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\!Template\InputFiles\EnrollmentDisputeTemplate.D20170912T214019.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\!Template\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\!Template\TestDataInsertScript\Template-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\!Template\ValidationScript\Template-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48642_FR18\ValidationScript\48642_FR18-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48644_FR31\ValidationScript\48646-FR25-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48646_FR25\ValidationScript\48646-FR25-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48647_FR23\ValidationScript\48647_FR23-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48654_FR4\ValidationScript\48654_FR4-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48659_FR10\ValidationScript\48659_FR10-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48660_FR16\ValidationScript\48660_FR16-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48666_FR24\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48666_FR24\TestDataInsertScript\48666-FR24-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48646_FR25\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48646_FR25\TestDataInsertScript\48646-FR25-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48654_FR4\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48654_FR4\TestDataInsertScript\48654-FR4-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48659_FR10\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48666_FR24\ValidationScript\48666_FR24-validation.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\ScriptFileLibrary\48659-FR10-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\DisputeFileLibrary\ValidDisputes\EnrollmentDispute.D20170912T214019.txt" />
+    <Content Include="TestTargets\SBM\TestData\Delimited\FV\Batch\FV-batch-keys-txt.txt" />
+    <Content Include="TestTargets\SBM\TestData\Delimited\TestKeys\sbm-ppr-data-batch-test-keys.txt" />
+    <Content Include="TestTargets\SBM\TestData\SQL\ProdR_Prod_Transfer\sbm-ppr-data - PROD.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\ProdR_Prod_Transfer\sbm-ppr-data - PRODR.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\sbm-ppr-data-batch-PD500.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\sbm-ppr-data-batch.sql" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\Batch\EPSExtractBatch02.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\Batch\EPSExtractBatch.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\enrollmentDisputeCase.xml" />
+    <Content Include="TestTargets\WebServices\TestData\UniverseDetails\iUniverse.TestData.sql" />
+    <Content Include="TestTargets\WebServices\TestSuites\CERRSConnect\XMLFile1.xml" />
+    <Content Include="TestTargets\WebServices\XMLFile1.xml" />
+    <EmbeddedResource Include="TestData\ERR_Import_InsertPreaudit.sql" />
+    <Content Include="TestData\PeopleAddress.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\2016_Open_Cases_cases_20160930_CCHC_Part1.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\2016_Open_Cases_cases_20160930_CCHC_Part2.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\2016_Open_Cases_cases_20160930_CCHC_Part3.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\2017_CCHC_Complex_Cases.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\2017_CCHC_Complex_Cases_update.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\HICSCases_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\HICSCases_Limited.txt" />
+    <Content Include="TestTargets\CCHC\TestData\cases\not_category_4.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\2017_CCHC_Complex_Cases_contacts.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\2017_CCHC_Complex_Cases_contacts_update.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\not_category_4.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\2016_Open_Cases_contacts_20160930_CCHC_Part1.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\2016_Open_Cases_contacts_20160930_CCHC_Part2.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\2016_Open_Cases_contacts_20160930_CCHC_Part3.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\HICSContacts_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\contacts\HICSContacts_Limited.txt" />
+    <Content Include="TestTargets\CCHC\TestData\HICSCases_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\HICScasework_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\HICScomments_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\HICSContacts_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\HICS_type_of_service_20160720.txt" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\20569ClearTestData.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\20569GetHICSContactsIDFromCaseID.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\CleanUpHICSCases.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\DeleteCCHCReloadData.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\InsertCCHCReloadData.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\TRUNCATE_ERR_1095A_Tables.sql" />
+    <Content Include="TestTargets\CCHC\TestData\Scripts\TRUNCATE_ODS_Tables.sql" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27248.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27261.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27262.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27294.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27298.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27300.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27301.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27302.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27304.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27352.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27358.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\27368.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\HICS\OneCase.txt" />
+    <Content Include="TestTargets\CERRS.NG\TestData\HICS\OneCaseContact.txt" />
+    <Content Include="TestTargets\CERRS.NG\TestData\HICS\rtCases.txt" />
+    <Content Include="TestTargets\CERRS.NG\TestData\ProductionRegression.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\SandBox.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\SeedFile.txt" />
+    <Content Include="TestTargets\CERRS.NG\TestData\Users\tst-1095analyst.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestData\Users\tst-manager.xml" />
+    <Content Include="TestTargets\CERRS.NG\TestGolds\SeedFile.txt" />
+    <Content Include="TestTargets\DataLoad\TestData\SeedFile.txt" />
+    <Content Include="TestTargets\DataLoad\TestGolds\IssuerDisputes\834PreAuditStructures.xml" />
+    <Content Include="TestTargets\DataLoad\TestGolds\IssuerDisputes\834RCNOStructures.xml" />
+    <Content Include="TestTargets\DataLoad\TestGolds\SeedFile.txt" />
+    <Content Include="TestTargets\Disputes\Scripts\ClearAll.sql" />
+    <Content Include="TestTargets\Disputes\Scripts\TestCheck.sql" />
+    <Content Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\HICSCases.5k.txt" />
+    <Content Include="TestTargets\Disputes\TestData\Datasets\5KUsers - Pre-M834\HICSContact.5k.txt" />
+    <None Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48642_FR18\InputFiles\EnrollmentDispute_testForm_FR_18_67B38C4C36ED4769B783E1C41C9F3C82.E" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48642_FR18\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48644_FR31\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48647_FR23\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48647_FR23\TestDataInsertScript\48647-FR23-RCNO.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\DisputeInputFiles\48660_FR16\TestDataCleanupScript\FormRuleCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\21197.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\25312.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\25313.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\CRMEnrollmentDispute.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\GenericDispute.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\NewDisputeFormat.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Disputes\SampleDispute.txt" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197AddAnalystFeedback.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197AddHICSCase.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197ClearTestData.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197DeleteHICSCase.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197SelectRCNORecords.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\21197UpdateRCNOdata.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\old\21197AddAnalystFeedbackRecord.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\old\21197RefData.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\Scripts\old\21197RefDataCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\EnrollmentDisputes\TestGolds\21197TestGold.txt" />
+    <Content Include="TestTargets\Disputes\TestProperties\TestDataInsertScript\Test Data 39644 PD588-90_R9.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\IssuerDisputesOld\kil_201601.txt" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\Scripts\22395InjectRefData.sql" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\PPR\Scripts\22395RefDataCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\Scripts\22398InjectRefData.sql" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\PreAudit\Scripts\22398RefDataCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\Scripts\22399RefData.sql" />
+    <Content Include="TestTargets\Disputes\TestData\IssuerDisputes\RCNO\Scripts\22399RefDataCleanup.sql" />
+    <Content Include="TestTargets\Disputes\TestData\Scripts\EnrollmentDispute\GetDispositionCodes.sql" />
+    <Content Include="TestTargets\Disputes\TestData\Scripts\RCNO\rcnoM834RefDataMCR.sql" />
+    <Content Include="TestTargets\Disputes\TestGolds\834FFMdboStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834FFMdboStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834FFMdbovFFM_Extract_AllStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834FFMExtractTable.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834FFMstageStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834FFMstagevFFM_ExtractStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834PreAuditStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834vPREAUDIT_ForPaymentDisputes.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\834vRCNO_For_ODS.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\Non834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\PreAudit_20161231_table_data.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\vRCNO_Active834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\vRCNO_ALL_2834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\vRCNO_MostRecentByYear834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\vRCNO_MostRecentByYear_N1834RCNOStructures.xml" />
+    <Content Include="TestTargets\Disputes\TestGolds\IssuerDisputesOld\vRCNO_MostRecentByYear_N2834RCNOStructures.xml" />
+    <Content Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23088_TxtFile.txt" />
+    <Content Include="TestTargets\FileManagement\TestData\CedarFileMgtAutomation\US23089_TxtFile.txt" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\23095-ClearTestData.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\28195-ClearTestData.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\29651-AddFileNameToDisputesDB.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\29651-ClearTestData.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\31195-ClearTestData.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\AddFilenameToDisputesDB.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\AddSBMFilenameToDisputesDB.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\ClearCedarOpsDb.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\Opera\CleanUpEmailTable.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\Opera\CreateEmailTableAndInsert.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\Python\EFTOutboundAutomation.py" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\RemoveFileNameFromDisputesDB.sql" />
+    <Content Include="TestTargets\FileManagement\TestData\Scripts\RemoveSBMFileNameFromDisputesDB.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\fv900-ppr-data.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV803.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV9.sql" />
+    <Content Include="TestTargets\SBM\TestData\XML\EPSExtracts\Test_EPSExtract_44195_SPD5.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD5_2.xml" />
+    <Content Include="TestTargets\WebServices\TestData\EnrollmentDisputes\23845.txt" />
+    <Content Include="TestTargets\WebServices\TestData\EnrollmentDisputes\23854.txt" />
+    <Content Include="TestTargets\WebServices\TestData\MCRJournaling.sql" />
+    <Content Include="TestTargets\WebServices\TestData\TC33206.sql" />
+    <Content Include="TestTargets\Reporting\TestData\SeedFile.txt" />
+    <Content Include="TestTargets\Reporting\TestGolds\SeedFile.txt" />
+    <Content Include="TestTargets\SBM\Notes.txt" />
+    <Content Include="TestTargets\SBM\TestData\DefaultEPSExtract.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TestTargets\SBM\TestData\DefaultKIL.txt" />
+    <Content Include="TestTargets\SBM\TestData\SQL\500.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\501.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\ClearSBMData.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV701.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV801.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV900.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV905.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV908.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\FV\SBMTestData_FV909.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\500.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\501.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD5.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD500.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD501.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD502.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD504.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD505.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\gSBMTestData_PD506.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD1000.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD1001.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD1002.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD1599.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD3.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD506_redispo.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD511.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD521.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD530.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD531.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD552.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SBMTestData_PD568.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\SPD\SPD568SupportingData.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD5.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD500.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD501.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD502.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD504.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD504_hardascii.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD505.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD506.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\gSBMTestData_PD568.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_AssertPPR.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV701.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV801.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV900.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV905.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV908.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_FV909.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_Global.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD1000.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD1001.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD1002.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD1599.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD3.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD506_redispo.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD511.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD521.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD530.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD531.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD552.sql" />
+    <Content Include="TestTargets\SBM\TestData\SQL\Unsorted\SBMTestData_PD568.sql" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV701.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV801.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV803.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV9.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV900.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV905.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV908.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\FV\UT_EPS_FV909.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD506_redispo.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_PD3.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD5.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD500.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD501.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD502.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD504.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD505.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD506.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\gUT_EPS_SPD568.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_PD511.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD1000.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD1001.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD1002.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD1599.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD521.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD530.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD530_SPD1002.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD531.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD531_SPD1000.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD552.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\SPD\UT_EPS_SPD568.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD5.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD500.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD501.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD502.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD504.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD504_hardascii.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD505.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD506.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\gUT_EPS_SPD506_redispo.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV701.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV801.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV803.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV9.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV900.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV905.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV908.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_FV909.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_PD3.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_PD511.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD1000.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD1001.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD1002.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD1599.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD521.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD530.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD530_SPD1002.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD531.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD531_SPD1000.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD552.xml" />
+    <Content Include="TestTargets\SBM\TestData\XML\Unsorted\UT_EPS_SPD568.xml" />
+    <Content Include="TestTargets\UIE\TestGolds\SeedFile.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "C:\TestProjects\Cognosante\Cognosante.QA.TestProjects\Cognosante.QA.CEDAR\TestConfigs\*.exe.config" "C:\Quintity TestEngineer 3.0" /y
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
