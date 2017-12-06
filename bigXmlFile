@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition="Some other change to be merged!">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>My merged change went here.</DebugType>
     <Optimize>false</Optimize>
