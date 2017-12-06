@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition="Demonstrate a merge conflict!">Debug</Configuration>
+    <Configuration Condition="Demonstrate a merge conflict!">Merge conflict introduced by someone else</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D5D453FE-DA26-4212-B0B1-265798D1899E}</ProjectGuid>
     <OutputType>Library</OutputType>
